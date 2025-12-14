@@ -9,7 +9,7 @@
   "containerDefinitions": [
     {
       "name": "backend-container",
-      "image": "zaglushka",                    
+      "image": "zsaglushka",                    
       "essential": true,
       "portMappings": [
         { "containerPort": 8080, "hostPort": 8080, "protocol": "tcp" }
