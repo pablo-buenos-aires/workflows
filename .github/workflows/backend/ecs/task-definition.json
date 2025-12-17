@@ -15,6 +15,7 @@
         { "containerPort": 8080, "hostPort": 8080, "protocol": "tcp" }
       ],
       "environment": [
+         { "name": "S3_BUCKET", "value": "photos-bucket666" },
         { "name": "DB_HOST", "value": "db-postgres-id.cnk6oeya6pzp.sa-east-1.rds.amazonaws.com" },
         { "name": "DB_PORT", "value": "5432" }
       ],
