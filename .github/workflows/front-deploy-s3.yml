@@ -1,5 +1,8 @@
 name: Frontend deploy to S3
 
+#permissions:
+#  id-token: write   # нужно для OIDC → AWS STS
+
 on:
   # Это делает workflow "библиотечным"
   workflow_call:
@@ -50,12 +53,18 @@ jobs:
       - name: Build frontend
         run: ${{ inputs.build_command }}
 
-      - name: Configure AWS credentials
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ${{ secrets.AWS_REGION }}
+      - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          role-to-assume: arn:aws:iam::836940249137:role/gitHubActionsDeployRole
+          aws-region: sa-east-1
+
 
       - name: Sync to S3
         run: |
