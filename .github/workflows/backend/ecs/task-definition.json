@@ -36,6 +36,27 @@
           "awslogs-stream-prefix": "go-backend-"
         }
       }
-    }
+    },
+    {
+      "name": "xray-daemon",
+      "image": "public.ecr.aws/xray/aws-xray-daemon:latest",
+      "essential": false,
+      "cpu": 32,
+      "memoryReservation": 128,
+      "portMappings": [
+        { "containerPort": 2000, "hostPort": 2000, "protocol": "udp" }
+      ],
+      "environment": [
+        { "name": "AWS_REGION", "value": "sa-east-1" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/backend",
+          "awslogs-region": "sa-east-1",
+          "awslogs-stream-prefix": "xray-daemon"
+        }
+      }
+  }
   ]
 }
