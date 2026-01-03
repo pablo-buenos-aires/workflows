@@ -11,7 +11,7 @@
   "containerDefinitions": [
     {
       "name": "backend-container",
-      "image": "zsaglushka",
+      "image": "zaglushka",
       "essential": true,
       "portMappings": [
         {
