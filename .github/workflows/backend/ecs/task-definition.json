@@ -77,8 +77,31 @@
           "enable-ecs-log-metadata": "true"
         }
       },
-      "memoryReservation": 64
+      "memoryReservation": 64,
+      "portMappings": [
+        { "containerPort": 2020, "hostPort": 2020, "protocol": "tcp" }
+      ],
+      "environment": [
+        { "name": "FLB_HTTP_SERVER", "value": "On" },
+        { "name": "FLB_HTTP_LISTEN", "value": "0.0.0.0" },
+        { "name": "FLB_HTTP_PORT", "value": "2020" }
+      ],
+      "secrets": [
+        {
+          "name": "AWS_REGION",
+          "valueFrom": "arn:aws:secretsmanager:sa-east-1:836940249137:secret:db_credentials-NtiqzU:awsregion::"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/backend",
+          "awslogs-region": "sa-east-1",
+          "awslogs-stream-prefix": "log-router"
+        }
+      }
     },
+
     {
       "name": "xray-daemon",
       "image": "public.ecr.aws/xray/aws-xray-daemon:latest",
