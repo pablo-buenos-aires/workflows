@@ -119,6 +119,25 @@
           "awslogs-stream-prefix": "xray-daemon"
         }
       }
+    },
+    {
+      "name": "prom-agent",
+      "image": "836940249137.dkr.ecr.sa-east-1.amazonaws.com/prometheus-agent:v1",
+      "essential": false,
+      "cpu": 32,
+      "memoryReservation": 128,
+      "environment": [
+        { "name": "AWS_REGION", "value": "sa-east-1" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/backend",
+          "awslogs-region": "sa-east-1",
+          "awslogs-stream-prefix": "prom-agent"
+        }
+      }
     }
+
   ]
 }
