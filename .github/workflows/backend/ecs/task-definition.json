@@ -68,28 +68,20 @@
     },
     {
       "name": "log_router",
-      "image": "public.ecr.aws/aws-observability/aws-for-fluent-bit:latest",
+      "image": "836940249137.dkr.ecr.sa-east-1.amazonaws.com/fluentbit-router:v1",
       "essential": true,
       "firelensConfiguration": {
         "type": "fluentbit",
         "options": {
-          "enable-ecs-log-metadata": "true"
+          "enable-ecs-log-metadata": "true",
+          "config-file-type": "file",
+          "config-file-value": "/fluent-bit/custom/fluent-bit.conf"
         }
       },
       "memoryReservation": 64,
       "portMappings": [
-        { "containerPort": 2020, "hostPort": 2020, "protocol": "tcp" }
-      ],
-      "environment": [
-        { "name": "FLB_HTTP_SERVER", "value": "On" },
-        { "name": "FLB_HTTP_LISTEN", "value": "0.0.0.0" },
-        { "name": "FLB_HTTP_PORT", "value": "2020" }
-      ],
-      "secrets": [
-        {
-          "name": "AWS_REGION",
-          "valueFrom": "arn:aws:secretsmanager:sa-east-1:836940249137:secret:db_credentials-NtiqzU:awsregion::"
-        }
+        { "containerPort": 2020, "hostPort": 2020, "protocol": "tcp" },
+        { "containerPort": 2021, "hostPort": 2021, "protocol": "tcp" }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
@@ -100,7 +92,6 @@
         }
       }
     },
-
     {
       "name": "xray-daemon",
       "image": "public.ecr.aws/xray/aws-xray-daemon:latest",
