@@ -95,7 +95,7 @@
     {
       "name": "xray-daemon",
       "image": "public.ecr.aws/xray/aws-xray-daemon:latest",
-      "essential": false,
+      "essential": true,
       "cpu": 32,
       "memoryReservation": 128,
       "portMappings": [
@@ -123,7 +123,7 @@
     {
       "name": "prom-agent",
       "image": "836940249137.dkr.ecr.sa-east-1.amazonaws.com/prometheus-agent:v1",
-      "essential": false,
+      "essential": true,
       "cpu": 32,
       "memoryReservation": 128,
       "environment": [
