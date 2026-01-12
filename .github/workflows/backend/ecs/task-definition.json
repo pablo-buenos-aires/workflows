@@ -60,8 +60,8 @@
         "options": {
           "awslogs-region": "sa-east-1",
           "awslogs-group": "/ecs/backend",
-          "awslogs-stream-prefix": "backend-",
-          "auto_create_group": "true"
+          "awslogs-stream-prefix": "backend-"
+
         }
       }
     },
