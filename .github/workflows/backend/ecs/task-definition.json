@@ -56,9 +56,8 @@
         }
       ],
       "logConfiguration": {
-        "logDriver": "awslog",
+        "logDriver": "awslogs",
         "options": {
-          "Name": "cloudwatch",
           "region": "sa-east-1",
           "log_group_name": "/ecs/backend",
           "log_stream_prefix": "backend-",
