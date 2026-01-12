@@ -58,9 +58,9 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "region": "sa-east-1",
-          "log_group_name": "/ecs/backend",
-          "log_stream_prefix": "backend-",
+          "awslogs-region": "sa-east-1",
+          "awslogs-group": "/ecs/backend",
+          "awslogs-stream-prefix": "backend-",
           "auto_create_group": "true"
         }
       }
