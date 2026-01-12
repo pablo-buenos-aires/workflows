@@ -80,7 +80,7 @@
         "options": {
           "awslogs-group": "/ecs/backend",
           "awslogs-region": "sa-east-1",
-          "awslogs-stream-prefix": "log-router"
+          "awslogs-stream-prefix": "log-router FB"
         }
       }
     },
